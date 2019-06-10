@@ -19,7 +19,6 @@ private:
 
 	std::string createSentence();
 	std::vector<std::string> fillVectorFromFile(const std::string);
-	void shuffleAllVectors();
 	int randomNumber(std::vector<std::string>&);
 public:
 	Sentence();

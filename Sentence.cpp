@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "Sentence.h"
-#include <iostream>
 #include <algorithm>
 #include <random>
+
 std::mt19937 gen{ std::random_device{}() };
 template<typename T>
 T random(T min, T max) {
@@ -23,7 +23,6 @@ void Sentence::showSentence() const {
 }
 
 std::string Sentence::createSentence() {
-	shuffleAllVectors();
 	finalSentence = vOfPronouns[randomNumber(vOfPronouns)] + " " + vOfAdverbs[randomNumber(vOfAdverbs)]
 		+ " " + vOfVerbs[randomNumber(vOfVerbs)] + " " + vOfPrepositions[randomNumber(vOfPrepositions)]
 		+ " " + vOfAdjectives[randomNumber(vOfAdjectives)] + " " + vOfNouns[randomNumber(vOfNouns)];
@@ -42,17 +41,7 @@ std::vector<std::string> Sentence::fillVectorFromFile(const std::string filename
 	return tempV;
 }
 
-void Sentence::shuffleAllVectors() {
-	std::random_shuffle(vOfPronouns.begin(), vOfPronouns.end());
-	std::random_shuffle(vOfAdverbs.begin(), vOfAdverbs.end());
-	std::random_shuffle(vOfVerbs.begin(), vOfVerbs.end());
-	std::random_shuffle(vOfPrepositions.begin(), vOfPrepositions.end());
-	std::random_shuffle(vOfAdjectives.begin(), vOfAdjectives.end());
-	std::random_shuffle(vOfNouns.begin(), vOfNouns.end());
-	
-}
-
 int Sentence::randomNumber(std::vector<std::string>& v) {
-	int randomNumber = random<int>(0, v.size());
+	int randomNumber = random<int>(0, v.size() - 1);
 	return randomNumber;
 }

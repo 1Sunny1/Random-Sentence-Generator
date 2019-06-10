@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Sentence.h"
-#include <iostream>
 
 int main()
 {
